@@ -64,19 +64,22 @@ h_replacer = hash_replacers.RegexpReplacer()
 for i,tweet in enumerate(test):
     test[i] = h_replacer.replace(tweet)
 
-# Convert a collection of text documents to a matrix of token counts
+# Convert collection of text documents to a matrix of token counts
+vocabulary_to_load = pickle.load(open('models/vocabulary.p', 'rb'))
 vectorizer = CountVectorizer(
     analyzer = 'word',
     tokenizer = tokenize,
     lowercase = True,
     ngram_range = (1,3),
     max_df = 0.9261187281287935,
-    min_df = 4
+    min_df = 4,
+    vocabulary = vocabulary_to_load
 )
+vectorizer._validate_vocabulary()
 test_data_features = vectorizer.transform(test)
 
-# Transform a count matrix to a normalized tf-idf representation
-tfidf_transformer = TfidfTransformer()
+# Transform count matrix to a normalized tf-idf representation
+tfidf_transformer = pickle.load(open('models/corpus_data_tfidf_fitted.p', 'rb'))
 test_data_features_tfidf = tfidf_transformer.transform(test_data_features)
 
 
@@ -89,3 +92,5 @@ predictions_list = [int(label) for label in predicted_labels]
 # CREATE SUBMISSION FILE
 print("Creating submission file in results/ folder")
 helpers.create_csv_submission(ids, predictions_list, 'results/submission.csv')
+
+print("Submission file successfully created!")

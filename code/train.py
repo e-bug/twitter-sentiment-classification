@@ -59,14 +59,15 @@ y_train_full = np.append(pos_labels_full, neg_labels_full)
 
 
 # PRE-PROCESS DATA
-print("Pre-processing the data...")
+print("Pre-processing and feature representation... " 
+      "This takes around 40 minutes!")
 
 # Remove pound sign from hashtags
 h_replacer = hash_replacers.RegexpReplacer()
 for i,tweet in enumerate(X_train_full):
     X_train_full[i] = h_replacer.replace(tweet)
 
-# Convert a collection of text documents to a matrix of token counts
+# Convert collection of text documents to a matrix of token counts
 vectorizer = CountVectorizer(
     analyzer = 'word',
     tokenizer = tokenize,
@@ -75,16 +76,24 @@ vectorizer = CountVectorizer(
     max_df = 0.9261187281287935,
     min_df = 4
 )
-corpus_data_features = vectorizer.fit_transform(X_train_full)
+corpus_data_fitted = vectorizer.fit(X_train_full)
+pickle.dump(corpus_data_fitted.vocabulary_, 	# save vocabulary for future
+            open('models/vocabulary.p', 'wb'))	# predictions
+corpus_data_features = corpus_data_fitted.transform(X_train_full)
 
-# Transform a count matrix to a normalized tf-idf representation
+
+# Transform count matrix to a normalized tf-idf representation
 tfidf_transformer = TfidfTransformer()
-corpus_data_features_tfidf = tfidf_transformer\
-                              .fit_transform(corpus_data_features)
+corpus_data_tfidf_fitted = tfidf_transformer.fit(corpus_data_features)
+pickle.dump(corpus_data_tfidf_fitted, 		# save fitted Tfidf for future
+            open('models/corpus_data_tfidf_fitted.p', 'wb'))	# predictions
+corpus_data_features_tfidf = corpus_data_tfidf_fitted\
+                              .transform(corpus_data_features)
 
 
 # TRAIN CLASSIFIER
-print("Training Logistic Regression classifier...")
+print("Training Logistic Regression classifier... "
+      "This takes around 10 minutes!")
 clf_logreg = LogisticRegression(max_iter=100, n_jobs=-1, C=3.41)\
               .fit(corpus_data_features_tfidf, y_train_full)
 
@@ -92,3 +101,5 @@ clf_logreg = LogisticRegression(max_iter=100, n_jobs=-1, C=3.41)\
 # SAVE MODEL
 print("Saving the trained classifier in models/ folder...")
 pickle.dump(clf_logreg, open('models/clf_logreg.p', 'wb'))
+
+print("Model successfully trained!")
