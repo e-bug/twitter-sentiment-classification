@@ -66,6 +66,6 @@ You can train the classifier that we use for the top Kaggle submission. To do:
   ```
   
   This file makes use of `data/train_pos_full.txt` and `data/train_neg_full.txt` (data files from the Kaggle competition) as the training sets and creates a model in the `code/models` folder.
-  The time needed to run it is between 30 and 45 minutes: 20-30 minutes for pre-processing and around 10 minutes for fitting the classifier (depending on your machine).
+  The time needed to run it is between 50 and 60 minutes: around 50 minutes for pre-processing and around 10 minutes for fitting the classifier (depending on your machine).
  
 You can then predict labels for new data as described in the [previous section](#kaggle-result-reproduction).
