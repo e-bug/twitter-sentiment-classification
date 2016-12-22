@@ -26,5 +26,5 @@ In order to generate the top Kaggle submission, please ensure all Python [requir
 cd code
 python run.py
 ```
-This makes use of the pre-trained classifier available in the [`models`](code/models/) folder to predict labels for new tweets and store them in a `.csv` file in the [`results`](code/results/) folder. The default [`test data`](data/test_data.txt) is the one provided for the Kaggle competition, but can be easily changed in [`run.py`](code/run.py).
+This makes use of the pre-trained classifier available in the [`models`](code/models/) folder to predict labels for new tweets and store them in a `.csv` file in the [`results`](code/results/) folder. The default `test data` is the one provided for the Kaggle competition, but can be easily changed in [`run.py`](code/run.py).
 ## Training from scratch
