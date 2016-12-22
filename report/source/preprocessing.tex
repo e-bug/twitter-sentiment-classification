@@ -1,0 +1,17 @@
+We now present various pre-processing steps suitable for this text classification task.
+The dataset provided for the competition has already been pre-processed by (i) replacing user references with a generic token (@XYZ $\rightarrow$ \texttt{<user>}), (ii) replacing URLs with a generic token (\texttt{<url>}), (iii) lowering the text and (iv) adding whitespace around punctuation.\\
+Through our error analysis and intuition, we notice several tweet characteristics that could potentially be useful as pre-processing for a TF-IDF feature representation.
+The following shows a list of pre-processing steps we have extensively been investigating:
+\begin{itemize}
+\item \textbf{Remove numbers.} Usually, numbers do not convey any emotions and could thus be stripped away. This is not always true: dates such as 09/11/2001 can clearly identify the polarity of a tweet.
+\item \textbf{Stemming}. Stemming is reducing words back to their root word. This might be useful as those words usually have a very similar meaning and can be grouped together.
+\item \textbf{Lemmatization.} Lemmatization is determining the lemma of a word based on its intended meaning with the use of a vocabulary and morphological analysis of words. This results in removing inflectional endings only and to return the base or dictionary form of a word.
+\item \textbf{N-grams.} N-grams can help detecting the correct meaning of a sentence by including combination of multiple words as tokens. N specifies the number of words in each combination. 
+\item \textbf{Remove stop words.} Usually, stop words are extremely common words which would appear to be of little value in helping select documents matching a user need (sentiment classification in our case).
+\item \textbf{Remove \texttt{<user>} and \texttt{<url>}.} Any group of words can actually be chosen as the stop words for a given purpose. Thus, due to their high frequency, \texttt{<user>} and \texttt{<url>} can be considered as stopwords and so could be removed from the text.
+\item \textbf{Remove the pound sign.} A hashtag may just consist of a single word and thus removing the pound sign (\#) at the beginning of it would improve the TF-IDF weights.
+\item \textbf{Group emoticons.} Preserving emoticons and mapping different representations of the same emoticon into one (e.g., \{ :-), : ), ( - :, (: \} $\rightarrow$ \{ :) \}) could let the classifier associate it to a specific polarity.
+\item \textbf{Negate verbs.} Inspired by Pang and Lee's sentiment analysis research\cite{not_paper}, stripping out the word ``not'' from tweets and appending the characters “NOT\_” before the following token in a tweet could identify negative feelings associated to otherwise positive words. For instance, ``She does not like me'' would become ``She does NOT\_like me'' and so ``NOT\_like'' would be a new (negative) token.
+\item \textbf{Fix common typos.} Typos are very common in tweets and thus fixing the most common ones (e.g., people forget the apostrophe when negating an auxiliary) might correctly identify several instances.
+\item \textbf{Replace repeating letters.} By looking at the tweets, it is possible to see that sometimes people repeat letters to stress the emotion (e.g., ``hunggrryyy'', ``huuuuuuungry'' for ``hungry''). Thus, another pre-processing step is to look for two or more repetitive letters in a word and replace them by just two of them.
+\end{itemize}

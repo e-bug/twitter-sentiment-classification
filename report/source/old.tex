@@ -1,0 +1,158 @@
+\subsection{Models and Methods}
+The models and methods
+section should describe what was
+done to answer the research question, describe how it was done,
+justify the experimental design, and
+explain how the results were analyzed.
+
+The model refers to the underlying mathematical model or structure which 
+you use to describe your problem, or that your solution is based on. 
+The methods on the other hand, are the algorithms used to solve the problem. 
+In some cases, the suggested method directly solves the problem, without having it 
+stated in terms of an underlying model. Generally though it is a better practice to have 
+the model figured out and stated clearly, rather than presenting a method without specifying 
+the model. In this case, the method can be more easily evaluated in the task of fitting 
+the given data to the underlying model.
+
+The methods part of this section, is not a step-by-step, directive,
+protocol as you might see in your lab manual, but detailed enough such
+that an interested reader can reproduce your
+work~\cite{anderson04,wavelab}.
+
+The methods section of a research paper provides the information by
+which a study's validity is judged.
+Therefore, it requires a clear and precise description of how an
+experiment was done, and the rationale
+for why specific experimental procedures were chosen.
+It is usually helpful to
+structure the methods section by~\cite{kallet04methods}:
+\begin{enumerate}
+\item Layout the model you used to describe the problem or the solution.
+\item Describing the algorithms used in the study, briefly including
+  details such as hyperparameter values (e.g. thresholds), and
+  preprocessing steps (e.g. normalizing the data to have mean value of
+  zero).
+\item Explaining how the materials were prepared, for example the
+  images used and their resolution.
+\item Describing the research protocol, for example which examples
+  were used for estimating the parameters (training) and which were
+  used for computing performance.
+\item Explaining how measurements were made and what
+  calculations were performed. Do not reproduce the full source code in
+  the paper, but explain the key steps.
+\end{enumerate}
+
+\subsection{Results}
+
+Organize the results section based on the sequence of table and
+figures you include. Prepare the tables and figures as soon as all
+the data are analyzed and arrange them in the sequence that best
+presents your findings in a logical way. A good strategy is to note,
+on a draft of each table or figure, the one or two key results you
+want to address in the text portion of the results.
+The information from the figures is
+summarized in Table~\ref{tab:fourier-wavelet}.
+
+
+
+When reporting computational or measurement results, always
+report the mean (average value) along with a measure of variability
+(standard deviation(s) or standard error of the mean).
+
+
+\section{Results}
+TODO - comparison of methods \\
+
+
+
+Why did we choose this classifier with this features.
+
+
+
+\label{sec:tips-software}
+
+There is a lot of literature (for example~\cite{hunt99pragmatic} and
+\cite{spolsky04software}) on how to write software. It is not the
+intention of this section to replace software engineering
+courses. However, in the interests of reproducible
+research~\cite{schwab00}, there are a few guidelines to make your
+reader happy:
+\begin{itemize}
+\item Have a \texttt{README} file that (at least) describes what your
+  software does, and which commands to run to obtain results. Also
+  mention anything special that needs to be set up, such as
+  toolboxes\footnote{For those who are
+  particularly interested, other common structures can be found at
+  \url{http://en.wikipedia.org/wiki/README} and
+  \url{http://www.gnu.org/software/womb/gnits/}.}.
+\item A list of authors and contributors can be included in a file
+  called \texttt{AUTHORS}, acknowledging any help that you may have
+  obtained. For small projects, this information is often also
+  included in the \texttt{README}.
+\item Use meaningful filenames, and not \texttt{temp1.py},
+  \texttt{temp2.py}. 
+\item Document your code. Each file should at least have a short
+  description about its reason for existence. Non obvious steps in the
+  code should be commented. Functions arguments and return values should be described.
+\item Describe how the results presented in your paper can be reproduced.
+\end{itemize}
+
+
+\subsection{\LaTeX{} Primer}
+\label{sec:latex-primer}
+
+\LaTeX{} is one of the most commonly used document preparation systems
+for scientific journals and conferences. It is based on the idea
+that authors should be able to focus on the content of what they are
+writing without being distracted by its visual presentation.
+The source of this file can be used as a starting point for how to use
+the different commands in \LaTeX{}. We are using an IEEE style for
+this course.
+
+\subsubsection{Installation}
+
+There are various different packages available for processing \LaTeX{}
+documents.
+On OSX use Mac\TeX{}
+(\url{http://www.tug.org/mactex/}). On Windows, use for example Mik\TeX{} (\url{http://miktex.org/}).
+
+\subsubsection{Compiling \LaTeX{}}
+Your directory should contain at least~4 files, in addition to image
+files. Images should be in \texttt{.png}, \texttt{.jpg} or
+\texttt{.pdf} format.
+\begin{itemize}
+\item IEEEtran.cls
+\item IEEEtran.bst
+\item groupXX-submission.tex
+\item groupXX-literature.bib
+\end{itemize}
+Note that you should replace groupXX with your chosen group name.
+Then, from the command line, type:
+\begin{verbatim}
+$ pdflatex groupXX-submission
+$ bibtex groupXX-literature
+$ pdflatex groupXX-submission
+$ pdflatex groupXX-submission
+\end{verbatim}
+This should give you a PDF document \texttt{groupXX-submission.pdf}.
+
+\subsubsection{Equations}
+
+There are three types of equations available: inline equations, for
+example $y=mx + c$, which appear in the text, unnumbered equations
+$$y=mx + c,$$
+which are presented on a line on its own, and numbered equations
+\begin{equation}
+  \label{eq:linear}
+  y = mx + c
+\end{equation}
+which you can refer to at a later point (Equation~(\ref{eq:linear})).
+
+\subsubsection{Tables and Figures}
+
+Tables and figures are ``floating'' objects, which means that the text
+can flow around it.
+Note
+that \texttt{figure*} and \texttt{table*} cause the corresponding
+figure or table to span both columns.
+

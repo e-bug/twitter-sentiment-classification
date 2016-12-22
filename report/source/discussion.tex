@@ -1,0 +1,14 @@
+Starting with different types of embeddings, the TF-IDF embedding gives the best baseline results. 
+This is surprising as the popular GloVe algorithm can be regarded as a state-of-the-art. 
+Thus, we speculate that GLoVe would have given comparable accuracies as TF-IDF with proper data pre-processing and/or using computationally expensive Neural Networks.\\ %\textbf{The fastText script gives good accuracies, but optimization was difficult given the limited information we had about hyper parameters}.\\
+Despite the fact that the current state-of-the-art\cite{deriu2016swisscheese} makes use of Convolutional Neural Networks, the lack of computational power to train them is not negligible.
+This is why we chose the TF-IDF: it is ease to be implemented and requires very small computational power. 
+The strength of our final model is its computational simplicity compared to large Neural Networks. 
+Our model can be trained in a moderate time interval (50 minutes on a laptop powered by 2.2-GHz Intel Core i7 processor and 16 GB of RAM) while still producing impressive predictions. 
+This is achieved by optimizing the model on different levels from the data pre-processing up to the classifier. 
+We have reported only the pre-processing steps that actually increase the accuracy alone, ensuring a better prediction. 
+The features were engineered using several tricks such as N-grams for better capturing the meaning of a tweet. 
+All hyperparamters have been tweaked extensively using a first round a coarse-grained global "random" search, and in a second round a very fine tuning on a small set of possible parameters around the best result from the first round. Finally, we have \textit{1,783,165} features that lead to a highly optimized Twitter sentiment analyzer with an accuracy of $0.8739 \pm 0.0017$ on 3-fold CV on the full dataset using Logistic Regression. Here each feature represent a token in the vocabulary with one or more words.\\
+Naturally, there exits further possibility to improve our sentiment analyzer.
+Considering the free available modules from the Natural Language Toolkit (NLTK)\cite{Loper:2002:NNL:1118108.1118117} for text pre-processing and classification, one can think of introducing extra levels of information such as the Part-Of-Speech tagging or Named-entity recognition.\\
+Moreover, it would be interesting to see the pre-processing steps applied to tweets that are then fed into a powerful method, such as CNNs.

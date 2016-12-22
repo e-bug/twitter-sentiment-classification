@@ -1,0 +1,12 @@
+In the following sections, we analyze different classifiers: Logistic Regression (LogReg), multinomial Naive Bayes (MNB) and Support Vector Machine (SVM) with the linear kernel. 
+To evaluate the performances of these classifiers, we run experiments on the provided small sets of labeled tweets, splitting them in train (80\%) and test (20\%) sets. 
+The learning is then performed using a 3-fold cross validation (CV), such that, in each fold, 2 partitions are used for training and 1 partition for validation. 
+Testing is then done on the completely held-out set. 
+Standard deviations (std) of the training set are reported from validation accuracies around 3-fold CV. 
+On the other hand, std on testing set are reported from the accuracy on test set and mean validation accuracy from the 3-fold CV. 
+The only metric used to assess the performances of the classifiers, in accordance with the competition's objective, is their accuracy in predicting correct labels. 
+\subsection{Feature generation}
+\input{feature_engineering}
+
+\subsection{Pre-processing}\label{preproIII}
+\input{preprocessing}

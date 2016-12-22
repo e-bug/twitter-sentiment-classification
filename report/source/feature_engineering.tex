@@ -1,0 +1,26 @@
+To build an accurate text classifier, it is crucial to find a good feature representation of the input text. Out of the numerous text feature engineering methods, we discuss two of them in this following section. 
+%As the traditional ``bag-of-words model'' does not catch the meaning of a tweet, we focus on a more advanced methodology: TF-IDF \textbf{does TF-IDF catch the meaning of tweets?}.\\
+%\iffalse
+%\subsubsection{GloVe (Stanford University)}
+\begin{itemize}
+\item \textbf{GloVe (Stanford University).}
+%The Global Vectors for Word Representation (GloVe)~\cite{pennington2014glove} is an unsupervised learning algorithm to generate numerical vectors of words. 
+The basic idea behind Global Vectors for Word Representation (GloVe)~\cite{pennington2014glove} is that ratios of word-word co-occurrence probabilities can encode some form of meaning. 
+Thus, one can measure the relatedness of two words by computing the Euclidean distance (or cosine similarity) between two word vectors.
+\iffalse
+\subsubsection{FastText (Facebook)}
+The FastText technique~\cite{bojanowski2016enriching,joulin2016bag} takes into account the internal  structure  of  words. Each word is represented as a bag of character n-grams. A vector is computed for each n-gram and these vectors are averaged to give a sentence representation.
+\fi
+%\subsubsection{TF-IDF}
+\item \textbf{TF-IDF.}
+Term Frequency - Inverse Document Frequency (TF-IDF) is a common numerical statistic that is intended to reflect the importance of a word to a document in a corpus.
+It consists of two terms.
+First, the term frequency (TF) measures how frequent a specific term appears in a document. The second term, inverse document frequency (IDF), is computed as the logarithm of the number of documents in the corpus divided by the number of documents where the specific term appears.
+It weights down terms occurring very frequently in the corpus and increases the weight of terms that occur rarely; thus giving a measure of how important a term is.
+
+\iffalse
+The second term, inverse document frequency (IDF), is computed as the logarithm of the number of documents in the corpus divided by the number of documents where the specific term appears.
+It weights down terms occurring very frequently in the corpus and increases the weight of terms that occur rarely; thus giving a measure of how important a term is.
+\fi
+\end{itemize}
+% To compute the TF-IDF, one can use the \texttt{python scikit-learn} implementation\cite{scikit-learn}, which is also directly standardizing the features.

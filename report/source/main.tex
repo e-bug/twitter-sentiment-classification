@@ -1,0 +1,133 @@
+\documentclass[10pt,conference,compsocconf]{IEEEtran}
+% \topmargin=0.cm
+%\addtolength{\textheight}{1.75cm}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{graphicx}	% For figure environment
+\usepackage{tabularx}
+\usepackage{booktabs}	% http://ctan.org/pkg/booktabs
+\usepackage{amssymb}	% For math symbols
+%\usepackage[labelformat=empty]{caption}
+\usepackage{float}
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage[margin=0.5in]{geometry}
+
+\begin{document}
+\title{%2\textsuperscript{nd} Project Report: 
+Twitter Sentiment Classification}
+
+\author{ \textbf{\texttt{[Memory Error]}}
+	Concetto Emanuele Bugliarello, Manik Garg and Zander Harteveld \\
+  \textit{Pattern Classification and Machine Learning (CS-433), Second Project, Fall Semester 2016, EPFL, Switzerland}\\
+  \texttt{\{emanuele.bugliarello, garg.manik, zander.harteveld\}@epfl.ch}
+}
+
+\maketitle
+
+\begin{abstract}
+%TODO - full summary of the report
+\input{abstract}
+\end{abstract}
+\vspace{0cm}
+\section{Introduction}
+\input{introduction}
+
+\vspace{0cm}
+\section{Data}
+\input{data}
+%\subsection{Kaggle Set}
+%\input{kaggle_data}
+%\subsection{Enlarged Set}
+%\input{downloaded}
+% \vspace{0.3cm}
+
+
+\iffalse
+%\begin{frame}{}
+ %   \begin{figure}[h!]
+  %      \begin{minipage}[t]{\linewidth}
+   %         \includegraphics[width=\textwidth]{plots/data_set_size_vs_accuracy.png}
+  %          \caption{\small \textbf{a}}
+  %          \label{fig:a}
+  %      \end{minipage}
+  %      \begin{minipage}[t]{0.32\linewidth}
+  %          \includegraphics[width=\textwidth]{plots/trunc.png}
+  %          \caption{\small \textbf{b}}
+  %          \label{fig:b}
+  %      \end{minipage}
+  %    \begin{minipage}[t]{0.32\linewidth}
+  %          \includegraphics[width=\textwidth]{plots/full.png}
+  %          \caption{\small \textbf{c}}
+  %         \label{fig:b}
+       \end{minipage}
+        \begin{minipage}[t]{0.32\linewidth}
+            \includegraphics[width=\textwidth]{plots/extended.png}
+            \caption{\small \textbf{d}}
+            \label{fig:b}
+        \end{minipage}
+        \hspace{0.5cm}
+        \vspace{0.3cm}
+        \caption{\textbf{Figure 1:} (a) Variation of dataset size on accuracy achieved on validation set from default TF-IDF logistic (b) boxplot of 3-fold CV for given truncated dataset; (c) boxplot of 3-fold CV for given full dataset; (d) boxplot of 3-fold CV for extended dataset}
+    \end{figure}
+\end{frame}
+\fi
+
+\section{Methodology}
+\input{methods}
+% \vspace{0cm}
+\section{Results}
+\input{results}
+% \vspace{0.3cm}
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\columnwidth]{plots/C_value_vs_accuracy.png}
+  \caption{Landscape of the hyperparameter \texttt{C} of Logistic Regression classifier on features obtained from optimized TF-IDF.}
+  \vspace{-3mm}
+  \label{fig:C_Landscape}
+\end{figure}
+% \vspace{0.3cm}
+% \vspace{0.3cm}
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=\columnwidth]{plots/ROC_logreg.png}
+  \caption{ROC curve ilustrating the LogReg classifier performances over 3-CV fold.}
+  \vspace{-3mm}
+  \label{fig:ROC}
+\end{figure}
+% ----------
+\iffalse
+\subsection{Figures and Tables}
+% \vspace{0.3cm}
+
+
+\texttt{variance curve to explain why downloading more datapoints was a good or bad choice?}\\
+
+\texttt{accuracy vs different preprocessing step plot (for tfidf, may be?) (may differ for different classifiers as naive preferred removal of stop words, others did not)}\\
+
+\texttt{accuracy vs classifier plot (for all the models)}\\
+
+\texttt{accuracy vs model with their corresponding best classifier plot}\\
+
+\texttt{hyperparameter optimization using random search}
+\fi
+
+% \vspace{0.3cm}
+\section{Discussion}
+%TODO - what is good, what is bad, challenges we faced, what could be improved
+\input{discussion}
+% \vspace{0.3cm}
+
+\section{Conclusion}
+\input{conclusion}
+% \vspace{0.3cm}
+% \section*{Acknowledgements}
+% The author thanks Christian Sigg for his careful reading and helpful
+% suggestions.
+% \vspace{0.3cm}
+\bibliographystyle{IEEEtran}
+\bibliography{BIB.bib}
+% \vspace{0.3cm}
+\end{document}
