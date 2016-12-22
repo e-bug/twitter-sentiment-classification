@@ -8,9 +8,9 @@ _For an easier examination by the EPFL TAs, this content is also available on [G
 <hr>
 ## Overview
 This repository contains the material shipped on December 22 and consists of the following folders:
-- `data`: Contains the [Twitter data files from Kaggle](https://inclass.kaggle.com/c/epfml-text/data)
-- `code`: Contains the Python files used to train the model and generate new predictions. Details about the files are available in the [README](code/README.md) inside the `code` folder.
-- `report`: Contains the submitted report and the files used to generate it.
+- `data`: contains the [Twitter data files from Kaggle](https://inclass.kaggle.com/c/epfml-text/data)
+- `code`: contains the Python files used to train the model and generate new predictions. Details about the files are available in the [README](code/README.md) inside the `code` folder.
+- `report`: contains the submitted report and the files used to generate it.
 
 ## Dependencies
 The code is written in `Python3`, that you can download from [here](https://www.python.org/downloads/release/python-352/) (we recommend installing a virtual environment such as [Anaconda](https://www.continuum.io/downloads) that already comes with many libraries).<br>
@@ -66,6 +66,6 @@ You can train the classifier that we use for the top Kaggle submission. To do:
   ```
   
   This file makes use of `data/train_pos_full.txt` and `data/train_neg_full.txt` (data files from the Kaggle competition) as the training sets and creates a model in the `code/models` folder.
-  The time needed to run it is between 30 and 45 minutes: 20-30 minutes for pre-processing and around 10 minutes for fitting the classifier.
+  The time needed to run it is between 30 and 45 minutes: 20-30 minutes for pre-processing and around 10 minutes for fitting the classifier (depending on your machine).
  
 You can then predict labels for new data as described in the [previous section](#kaggle-result-reproduction).
