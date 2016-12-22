@@ -20,11 +20,11 @@ The libraries required are:
 - NLTK packages: you can download alll the packages of NLTK by typying `python` on the terminal. Then:
   ```python
   import nltk
-  nltk.download()
+  nltk.download('all')
   ```
-  A new window will pop up. Click on the first line (Identifier: all) and then on the `Download` button at the bottom left .
+  It will automatically install all the packages of NLTK. Note that it takes a lot of time to download the `panlex_lite` package but you can stop the execution because the packages needed by our scripts will have been already installed.
 
-- SciPy (>=0.9): you can install it by typying `pip install -U scipy` on the terminal (it in included with Anaconda).
+- SciPy (>=0.9): you can install it by typying `pip install -U scipy` on the terminal (it is in included with Anaconda).
 - scikit-learn (0.18.1): you can install it by typying `pip install -U scikit-learn`, or `conda install scikit-learn` if you use Anaconda, on the terminal.
 
 ## Methodology
