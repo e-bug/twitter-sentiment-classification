@@ -8,12 +8,12 @@ _For an easier examination by the EPFL TAs, this content is also available on [G
 <hr>
 ## Overview
 This repository contains the material shipped on December 22 and consists of the following folders:
-- [`data`](data/): Contains the [Twitter data files from Kaggle](https://inclass.kaggle.com/c/epfml-text/data)
-- [`code`](code/): Contains the Python files used to train the model and generate new predictions. Details about the files are available in the [README](code/README.md) inside the `code` folder.
-- [`report`](report/): Contains the [submitted report](report/memory_error_text_classification.pdf) and the files used to generate it.
+- `data`: Contains the [Twitter data files from Kaggle](https://inclass.kaggle.com/c/epfml-text/data)
+- `code`: Contains the Python files used to train the model and generate new predictions. Details about the files are available in the [README](code/README.md) inside the `code` folder.
+- `report`: Contains the submitted report and the files used to generate it.
 
-### Dependencies
-The code is written in `Python3`, that you can download [here](https://www.python.org/downloads/release/python-352/) (we recommend installing a virtual environment such as [Anaconda](https://www.continuum.io/downloads) that already comes with many libraries).<br>
+## Dependencies
+The code is written in `Python3`, that you can download from [here](https://www.python.org/downloads/release/python-352/) (we recommend installing a virtual environment such as [Anaconda](https://www.continuum.io/downloads) that already comes with many libraries).<br>
 The libraries required are:
 - NumPy (>= 1.6.1): you can install it by typying `pip install -U numpy` on the terminal (it is included with Anaconda).
 - NLTK (3.0): you can install it by typying `pip install -U nltk` on the terminal.
@@ -27,13 +27,14 @@ The libraries required are:
 - SciPy (>=0.9): you can install it by typying `pip install -U scipy` on the terminal (it in included with Anaconda).
 - scikit-learn (0.18.1): you can install it by typying `pip install -U scikit-learn`, or `conda install scikit-learn` if you use Anaconda, on the terminal.
 
-### Methodology
+## Methodology
 The final model consists of a Logistic Regression classifier. <br>
 We apply the following pre-processing steps before feeding the data into the classifier:
   1. Remove the pound sign (#) in fron of words
   2. Stem words (by using `EnglishStemmer` from `nltk.stem.snowball`)
   3. Replace two or more consecutive repetitions of a letter with two of the same
- We then convert the collection of text documents to a matrix of token counts. We do this with `CountVectorizer` from `sklearn.feature_extraction.text`, with the following hyperparameters:
+  
+We then convert the collection of text documents to a matrix of token counts. We do this with `CountVectorizer` from `sklearn.feature_extraction.text`, with the following hyperparameters:
  - analyzer = 'word'
  - tokenizer = tokenize (function that tokenizes the text by applying the pre-processing steps described above)
  - lowercase = True
@@ -52,5 +53,18 @@ In order to generate the top Kaggle submission, please ensure all Python [requir
 cd code
 python run.py
 ```
-This makes use of the pre-trained classifier available in the [`models`](code/models/) folder to predict labels for new tweets and store them in a `.csv` file in the [`results`](code/results/) folder. The default `test data` is the one provided for the Kaggle competition, but can be easily changed in [`run.py`](code/run.py).
+This makes use of the pre-trained classifier available in the `code/models` folder to predict labels for new tweets and store them in a `.csv` file in the `code/results` folder. The default `test data` is the one provided for the Kaggle competition, but can be easily changed in `code/run.py`.
+
 ## Training from scratch
+You can train the classifier that we use for the top Kaggle submission. To do:
+  1. Ensure all Python [requirements](#dependencies) are installed
+  2. Ensure the [Twitter data files from Kaggle](https://inclass.kaggle.com/c/epfml-text/data) are in the `data/` folder.
+  3. Run:
+  ```sh
+  cd code
+  python train.py
+  ```
+  This file makes use of `train_pos_full.txt` and `train_neg_full.txt` (data files from the Kaggle competition) as the training sets and creates a model in the `models` folder.
+  The time needed to run it is between 30 and 45 minutes: 20-30 minutes for pre-processing and around 10 minutes for fitting the classifier.
+ 
+You can then predict labels for new data as described in the [previous section](#kaggle-result-reproduction).
