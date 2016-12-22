@@ -53,7 +53,7 @@ In order to generate the top Kaggle submission, please ensure all Python [requir
 cd code
 python run.py
 ```
-This makes use of the pre-trained classifier available in the `code/models` folder to predict labels for new tweets and store them in a `.csv` file in the `code/results` folder. The default `test data` is the one provided for the Kaggle competition, but can be easily changed in `code/run.py`.
+This makes use of the pre-trained classifier available in the `code/models` folder to predict labels for new tweets and store them in a `.csv` file in the `code/results` folder. The default test data file is `data/test_data.txt` (the one provided for the Kaggle competition) but it can be easily changed in `code/run.py`.
 
 ## Training from scratch
 You can train the classifier that we use for the top Kaggle submission. To do:
@@ -64,7 +64,8 @@ You can train the classifier that we use for the top Kaggle submission. To do:
   cd code
   python train.py
   ```
-  This file makes use of `train_pos_full.txt` and `train_neg_full.txt` (data files from the Kaggle competition) as the training sets and creates a model in the `models` folder.
+  
+  This file makes use of `data/train_pos_full.txt` and `data/train_neg_full.txt` (data files from the Kaggle competition) as the training sets and creates a model in the `code/models` folder.
   The time needed to run it is between 30 and 45 minutes: 20-30 minutes for pre-processing and around 10 minutes for fitting the classifier.
  
 You can then predict labels for new data as described in the [previous section](#kaggle-result-reproduction).
